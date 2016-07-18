@@ -20,7 +20,7 @@ function loadDoc() {
         var doc = xhttp.getElementById('doc');
         console.log(doc);
         console.log(xml);
-        console.log(xhttp);
+        console.log(xhttp.responseXML);
     }
   };
   xhttp.open("GET", "people.xml", true);
