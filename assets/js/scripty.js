@@ -17,6 +17,8 @@ function loadDoc() {
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
         var xml = xhttp.response;
+        var x = xml.getElementsByTagName("doc");
+        console.log(x);
         console.log(xml);
         
         myFunction(xhttp.response);
