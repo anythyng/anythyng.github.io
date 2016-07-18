@@ -19,7 +19,7 @@ function loadDoc() {
         alert(xhttp.response)
         alert(xhttp.responseXML)
         alert(xhttp.responseHTML)
-        myFunction(xhttp.);
+        myFunction(xhttp);
     }
   };
   xhttp.open("GET", "people.xml", true);
