@@ -1,8 +1,8 @@
 function myFunction(xml) {
   var i;
   var xmlDoc = xml.responseXML;
-  var table="<tr><th>Artist</th><th>Title</th></tr>";
-  var x = xmlDoc.getElementsByTagName("CD");
+  var table="<tr><th>Name</th><th>Age</th></tr>";
+  var x = xmlDoc.getElementsByTagName("doc");
   for (i = 0; i <x.length; i++) {
     table += "<tr><td>" +
     x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue +
