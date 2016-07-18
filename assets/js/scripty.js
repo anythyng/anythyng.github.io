@@ -1,8 +1,7 @@
 function myFunction(xml) {
     var i;
-    var xmlDoc = xml.responseXML;
     var table="<tr><th>Name</th><th>Age</th></tr>";
-    var x = xmlDoc.getElementsByTagName("doc");
+    var x = xml.getElementsByTagName("doc");
     for (i = 0; i <x.length; i++) {
         table += "<tr><td>" +
         x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue +
@@ -18,7 +17,7 @@ function loadDoc() {
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
         alert(xhttp.responseXML)
-        myFunction(xhttp.responseXML);
+        myFunction(xhttp);
     }
   };
   xhttp.open("GET", "people.xml", true);
