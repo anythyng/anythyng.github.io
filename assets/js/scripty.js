@@ -17,10 +17,10 @@ function loadDoc() {
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
         var xml = xhttp.response;
-        var x = xhttp.responseType;
+        var x = xhttp.responseText;
         console.log(x);
         console.log(xml);
-        
+        console.log(xhttp);
         myFunction(xhttp.response);
     }
   };
