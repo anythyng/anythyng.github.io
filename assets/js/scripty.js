@@ -2,7 +2,7 @@ function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-        alert(JSON.parse(xhttp.responseText));
+        alert(JSON.stringify(xhttp.responseText));
     }
   };
   xhttp.open("GET", "people.xml", true);
