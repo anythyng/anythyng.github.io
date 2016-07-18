@@ -16,6 +16,7 @@ function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
+        xmlhttp.overrideMimeType('text/xml');
         var xml = xhttp.response;
 //        var doc = xhttp.getElementById('doc');
 //        console.log(doc);
