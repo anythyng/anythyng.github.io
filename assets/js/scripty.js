@@ -1,6 +1,7 @@
 function myFunction(xml) {
     var i;
     var xmlDoc = xml.responseXML;
+    alert(xmlDoc)
     var table="<tr><th>Name</th><th>Age</th></tr>";
     var x = xmlDoc.getElementsByTagName("doc");
     for (i = 0; i <x.length; i++) {
