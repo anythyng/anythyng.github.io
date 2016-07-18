@@ -16,8 +16,10 @@ function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
+        alert(xhttp.response)
         alert(xhttp.responseXML)
-        myFunction(xhttp);
+        alert(xhttp.responseHTML)
+        myFunction(xhttp.);
     }
   };
   xhttp.open("GET", "people.xml", true);
