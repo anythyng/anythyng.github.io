@@ -1,17 +1,16 @@
-function loadDoc(tag, url) {
+function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-      document.getElementsByClassName(tag).innerHTML = xhttp.responseText;
+        alert(xhttp);
     }
   };
-  xhttp.open("GET", url, true);
+  xhttp.open("GET", "people.xml", true);
   xhttp.send();
 }
 
 function getSubjects(){
     var subs_arr = [];
-    var subs = loadDoc('title', 'https://www.reddit.com')
     return subs_arr;
 }
 

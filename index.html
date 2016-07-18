@@ -5,9 +5,10 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+        <script src="https://jpillora.com/xdomain/dist/xdomain.min.js"></script>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body onload="loadSubjects()">
+	<body onload="loadDoc()">
 		<div id="wrapper">
 			<div id="main">
 				<div id="reel">
@@ -18,6 +19,7 @@
 								bound to find something.</p>
 							</div>
 						</div>
+                    <div id="hidden-div" style="display:none;"></div>
 						<article class="item thumb" data-width="282">
 							<h2 id="h2-subjects"></h2>
 							<a href="images/fulls/01.jpg" class="image"><img src="images/thumbs/01.jpg" alt=""></a>
@@ -99,6 +101,17 @@
 			<script src="assets/js/util.js"></script>
             <script src="assets/js/scripty.js"></script>
 			<script src="assets/js/main.js"></script>
+            <script>
+//                var h2_subs = document.getElementsByTagName('h2');
+//                var imgs = document.getElementsByTagName('img');
+//                var a = document.getElementsByTagName('a');
+//                var subs_arr = []
+//                for(var i = 0; i <  h2_subs.length; i++){
+//                    h2_subs[i].innerHTML = subs_arr[i];
+////                a.href = a_arr[i];
+////                imgs.src = imgs_arr[i];
+//                }
+            </script>
 
 	</body>
 </html>
