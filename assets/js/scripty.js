@@ -17,11 +17,10 @@ function loadDoc() {
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
         var xml = xhttp.response;
-        var x = xhttp.responseText;
-        console.log(x);
+        var doc = xml.getElementById('doc');
+        console.log(doc);
         console.log(xml);
         console.log(xhttp);
-        myFunction(xhttp.response);
     }
   };
   xhttp.open("GET", "people.xml", true);
