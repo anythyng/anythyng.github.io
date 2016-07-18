@@ -1,7 +1,6 @@
 function myFunction(xml) {
     var i;
     var xmlDoc = xml.responseXML;
-    alert(xmlDoc);
     var table="<tr><th>Name</th><th>Age</th></tr>";
     var x = xmlDoc.getElementsByTagName("doc");
     for (i = 0; i <x.length; i++) {
@@ -18,8 +17,8 @@ function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-        alert(xhttp.response)
-        myFunction(xhttp);
+        alert(xhttp.responseXML)
+        myFunction(xhttp.responseXML);
     }
   };
   xhttp.open("GET", "people.xml", true);
