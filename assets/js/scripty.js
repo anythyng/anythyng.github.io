@@ -20,11 +20,9 @@ function loadDoc() {
         var parser = new DOMParser();
         var xmlDoc = parser.parseFromString(xhttp.responseText, "application/xml");
         var xml = xhttp.response;
-    //        var doc = xhttp.getElementById('doc');
-    //        console.log(doc);
-        console.log(xml);
         console.log(xmlDoc);
         console.log(xhttp.responseXML);
+        myFunction(xmlDoc);
     }
   };
   xhttp.open("GET", "people.xml", true);
