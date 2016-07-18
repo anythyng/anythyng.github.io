@@ -17,11 +17,13 @@ function loadDoc() {
     xhttp.overrideMimeType('application/xml');
     xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(xhttp.responseText, "application/xml");
         var xml = xhttp.response;
     //        var doc = xhttp.getElementById('doc');
     //        console.log(doc);
         console.log(xml);
+        console.log(xmlDoc);
         console.log(xhttp.responseXML);
     }
   };
