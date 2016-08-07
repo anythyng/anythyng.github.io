@@ -118,7 +118,7 @@ var MixerInput = null;
 var timerID = null;
 window.onload = function () {
     if (!games[location.hash.substr(1)]) {
-        alert("Invalid game request!");
+        alert("Invalid game request!\nPlease choose a game from the 'Games' dropdown.\nEnjoy!);
         return;
     }
     //Initialize Iodine:
@@ -151,9 +151,9 @@ function downloadROM(gamename) {
 function registerROM() {
     clearTempString();
     processDownload(this, attachROM);
-    if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i)) {
-        Iodine.disableAudio();
-    }
+//    if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i)) {
+//        Iodine.disableAudio();
+//    }
     Iodine.play();
 }
 function registerBlitterHandler() {
