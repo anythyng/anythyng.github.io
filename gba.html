@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GBA GameCenter</title>
+            <meta charset="UTF-8">
+            <link href="css/bootstrap-theme.css" rel="stylesheet">
+            <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+            <link href="css/bootstrap.css" rel="stylesheet">
+            <link href="css/bootstrap.min.css" rel="stylesheet">
+            <!--Required Scripts-->
+            <script src="IodineGBA/includes/TypedArrayShim.js"></script>
+            <script src="IodineGBA/core/Cartridge.js"></script>
+            <script src="IodineGBA/core/DMA.js"></script>
+            <script src="IodineGBA/core/Emulator.js"></script>
+            <script src="IodineGBA/core/Graphics.js"></script>
+            <script src="IodineGBA/core/RunLoop.js"></script>
+            <script src="IodineGBA/core/Memory.js"></script>
+            <script src="IodineGBA/core/IRQ.js"></script>
+            <script src="IodineGBA/core/JoyPad.js"></script>
+            <script src="IodineGBA/core/Serial.js"></script>
+            <script src="IodineGBA/core/Sound.js"></script>
+            <script src="IodineGBA/core/Timer.js"></script>
+            <script src="IodineGBA/core/Wait.js"></script>
+            <script src="IodineGBA/core/CPU.js"></script>
+            <script src="IodineGBA/core/Saves.js"></script>
+            <script src="IodineGBA/core/sound/FIFO.js"></script>
+            <script src="IodineGBA/core/sound/Channel1.js"></script>
+            <script src="IodineGBA/core/sound/Channel2.js"></script>
+            <script src="IodineGBA/core/sound/Channel3.js"></script>
+            <script src="IodineGBA/core/sound/Channel4.js"></script>
+            <script src="IodineGBA/core/CPU/ARM.js"></script>
+            <script src="IodineGBA/core/CPU/THUMB.js"></script>
+            <script src="IodineGBA/core/CPU/CPSR.js"></script>
+            <script src="IodineGBA/core/graphics/Renderer.js"></script>
+            <script src="IodineGBA/core/graphics/RendererProxy.js"></script>
+            <script src="IodineGBA/core/graphics/BGTEXT.js"></script>
+            <script src="IodineGBA/core/graphics/BG2FrameBuffer.js"></script>
+            <script src="IodineGBA/core/graphics/BGMatrix.js"></script>
+            <script src="IodineGBA/core/graphics/AffineBG.js"></script>
+            <script src="IodineGBA/core/graphics/ColorEffects.js"></script>
+            <script src="IodineGBA/core/graphics/Mosaic.js"></script>
+            <script src="IodineGBA/core/graphics/OBJ.js"></script>
+            <script src="IodineGBA/core/graphics/OBJWindow.js"></script>
+            <script src="IodineGBA/core/graphics/Window.js"></script>
+            <script src="IodineGBA/core/graphics/Compositor.js"></script>
+            <script src="IodineGBA/core/memory/DMA0.js"></script>
+            <script src="IodineGBA/core/memory/DMA1.js"></script>
+            <script src="IodineGBA/core/memory/DMA2.js"></script>
+            <script src="IodineGBA/core/memory/DMA3.js"></script>
+            <script src="IodineGBA/core/cartridge/SaveDeterminer.js"></script>
+            <script src="IodineGBA/core/cartridge/SRAM.js"></script>
+            <script src="IodineGBA/core/cartridge/FLASH.js"></script>
+            <script src="IodineGBA/core/cartridge/EEPROM.js"></script>
+            <!--Add your webpage scripts below-->
+            <script src="user_scripts/XAudioJS/swfobject.js"></script>
+            <script src="user_scripts/XAudioJS/resampler.js"></script>
+            <script src="user_scripts/XAudioJS/XAudioServer.js"></script>
+            <script src="user_scripts/IodineGBAROMLoadGlueCode.js"></script>
+            <script src="user_scripts/IodineGBAJoyPadGlueCode.js"></script>
+            <script src="user_scripts/IodineGBASavesGlueCode.js"></script>
+            <script src="user_scripts/IodineGBAGraphicsGlueCode.js"></script>
+            <script src="user_scripts/IodineGBAAudioGlueCode.js"></script>
+            <script src="user_scripts/IodineGBACoreGlueCode.js"></script>
+            <script src="user_scripts/base64.js"></script>
+            <link rel="stylesheet" href="user_css/main.css">
+            
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="">GBA</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li class="dropdown" style="">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Games <span class="caret"></span></a>
+                  <ul class="dropdown-menu" style="overflow-x: hidden!important; overflow-y:scroll !important;max-height:600px;max-width:300px;">
+                    <li class=""><a class="tag tag-default tag-pill" href="./index.html#advancewars" onClick="history.go(0)">Advance Wars</a></li>
+                    <li class=""><a class="tag tag-default tag-pill" href="./index.html#advancewars2" onClick="history.go(0)">Advance Wars 2</a></li>
+                    <li class=""><a class="tag tag-default tag-pill" href="./index.html#aladdin" onClick="history.go(0)">Aladdin</a></li>
+                    <li class=""><a class="tag tag-default tag-pill" href="./index.html#alienhominid" onClick="history.go(0)">Alien Hominid</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#bomberman_max2blue" onClick="history.go(0)">Bomberman Max 2 - Blue Advance</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#bomberman_tournament" onClick="history.go(0)">Bomberman Tournament</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#bubblebobble" onClick="history.go(0)">Bubble Bobble: Old and New</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#croket1" onClick="history.go(0)">Croket! - Yume no Banker Survival!</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#croket2" onClick="history.go(0)">Croket! 2 - Yami no Bank to Banqueen</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#croket3" onClick="history.go(0)">Croket! 3 - Granu Oukoku no Nazo</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#croket4" onClick="history.go(0)">Croket! 4 - Bank no Mori no Mamorigami</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#digimon_racing" onClick="history.go(0)">Digimon Racing</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#dbz_supersonic" onClick="history.go(0)">Dragon Ball Z - Supersonic Warriors</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#drilldozer" onClick="history.go(0)">Drill Dozer</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#earthwormjim" onClick="history.go(0)">Earthworm Jim</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#earthwormjim2" onClick="history.go(0)">Earthworm Jim 2</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#ff1and2" onClick="history.go(0)">Final Fantasy 1 &amp; 2 Advance</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#ff4S" onClick="history.go(0)">Final Fantasy IV Advance (Sound Restoration Mod)</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#ff6" onClick="history.go(0)">Final Fantasy VI Advance</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#final_fantasy_tactics" onClick="history.go(0)">Final Fantasy Tactics Advance</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#fire_emblem" onClick="history.go(0)">Fire Emblem</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#frogger1" onClick="history.go(0)">Frogger Advance - The Great Quest</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#frogger2" onClick="history.go(0)">Frogger's Adventures - Temple of the Frog</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#frogger3" onClick="history.go(0)">Frogger's Adventures 2 - The Lost Wand</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#fzero_gp" onClick="history.go(0)">F-Zero - GP Legend</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#fzero_max" onClick="history.go(0)">F-Zero - Maximum Velocity</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#gamewatch4" onClick="history.go(0)">Game &amp; Watch Gallery 4</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#goldensun" onClick="history.go(0)">Golden Sun</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#gunstar_super_heroes" onClick="history.go(0)">Gunstar Super Heroes</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#hamtaro_heartbreak" onClick="history.go(0)">Hamtaro - Ham-Ham Heartbreak</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#kirbymirror" onClick="history.go(0)">Kirby &amp; The Amazing Mirror</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#kirbynightmare" onClick="history.go(0)">Kirby: Nightmare in Dreamland</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#superstar" onClick="history.go(0)">Mario &amp; Luigi: Superstar Saga</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#mariokart" onClick="history.go(0)">Mario Kart: Super Circuit</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#marioparty" onClick="history.go(0)">Mario Party Advance</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#mariopinball" onClick="history.go(0)">Mario Pinball Land</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#megamanbass" onClick="history.go(0)">Megaman &amp; Bass</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#megaman_battle1" onClick="history.go(0)">Megaman Battle Network 1</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#megaman_battle2" onClick="history.go(0)">Megaman Battle Network 2</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#megaman_battle3_blue" onClick="history.go(0)">Megaman Battle Network 3 Blue</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#megaman_battle4_blue" onClick="history.go(0)">Megaman Battle Network 4 Blue Moon</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#megaman_battle4_red" onClick="history.go(0)">Megaman Battle Network 4 Red Sun</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#megaman_battle5" onClick="history.go(0)">Megaman Battle Network 5 Team Protoman</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#megaman_battle6" onClick="history.go(0)">Megaman Battle Network 6 Cybeast Falzar</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#megaman_zero1" onClick="history.go(0)">Megaman Zero</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#megaman_zero2" onClick="history.go(0)">Megaman Zero 2</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#megaman_zero3" onClick="history.go(0)">Megaman Zero 3</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#megaman_zero4" onClick="history.go(0)">Megaman Zero 4</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#metalslug" onClick="history.go(0)">Metal Slug Advance</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#metroid_fusion" onClick="history.go(0)">Metriod Fusion</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#momotarou_dentetsu" onClick="history.go(0)">Momotarou Dentetsu G Gold Deck wo Tsukure!</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#monopoly" onClick="history.go(0)">Monopoly</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#monster_force" onClick="history.go(0)">Monster Force</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#mortal_kombat" onClick="history.go(0)">Mortal Kombat Advance</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#pacman_world" onClick="history.go(0)">Pacman World</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#pacman_world2" onClick="history.go(0)">Pacman World 2</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#pokemonemerald" onClick="history.go(0)">Pokemon Emerald</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#pokemongreen" onClick="history.go(0)">Pokemon Leaf Green</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#pokemonred" onClick="history.go(0)">Pokemon Fire Red</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#mysteryred" onClick="history.go(0)">Pokemon Mystery Dungeon Red</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#pokemonruby" onClick="history.go(0)">Pokemon Ruby</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#pokemonsapphire" onClick="history.go(0)">Pokemon Sapphire</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#gba_video_pokemon_1" onClick="history.go(0)">Pokemon Video Show Pak 1</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#gba_video_pokemon_2" onClick="history.go(0)">Pokemon Video Show Pak 2</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#gba_video_pokemon_3" onClick="history.go(0)">Pokemon Video Show Pak 3</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#gba_video_pokemon_4" onClick="history.go(0)">Pokemon Video Show Pak 4</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#sonic_advance" onClick="history.go(0)">Sonic Advance</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#sonic_advance2" onClick="history.go(0)">Sonic Advance 2</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#sonic_advance3" onClick="history.go(0)">Sonic Advance 3</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#sonicbattle" onClick="history.go(0)">Sonic Battle</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#sonicpinball" onClick="history.go(0)">Sonic Pinball</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#spyro_adventure" onClick="history.go(0)">Spyro Adventure</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#spyro_ice" onClick="history.go(0)">Spyro: Season of Ice</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#spyro_flame" onClick="history.go(0)">Spyro 2: Season of Flame</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#supermarioadvance" onClick="history.go(0)">Super Mario Advance</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#supermarioadvance2" onClick="history.go(0)">Super Mario Advance 2</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#supermarioadvance3" onClick="history.go(0)">Super Mario Advance 3</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#supermarioadvance4" onClick="history.go(0)">Super Mario Advance 4</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#supermonkeyballjr" onClick="history.go(0)">Super Monkey Ball Jr</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#super_street_fighter_2_turbo_revival" onClick="history.go(0)">Super Street Fighter II: Turbo Revival</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#super_street_fighter_3_alpha" onClick="history.go(0)">Super Street Fighter III: Alpha</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#tales_of_phantasia" onClick="history.go(0)">Tales of Phantasia</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#tak2_staff_of_dreams" onClick="history.go(0)">Tak 2: The Staff of Dreams</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#tmnt" onClick="history.go(0)">Teenage Mutant Ninja Turtles</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#tetris_worlds" onClick="history.go(0)">Tetris Worlds</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#sims_bustin_out" onClick="history.go(0)">The Sims: Bustin &#39; Out</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#sims2" onClick="history.go(0)">The Sims 2</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#simpsons" onClick="history.go(0)">The Simpsons: Road Rage</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#turok_evolution" onClick="history.go(0)">Turok Evolution</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#warioland4" onClick="history.go(0)">Wario Land 4</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#wario_ware" onClick="history.go(0)">Wario Ware Inc</a></li>
+                    <li class=""><a class="tag tag-default tag-pill"  href="./index.html#zelda_past" onClick="history.go(0)">The Legend of Zelda: A Link to the Past</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+        
+        
+        <br><br>
+        <div class="container main">
+        <div class="jumbotron">
+            <h1>Gameboy</h1>
+        </div>
+        <div class="container main">
+        <canvas class="container main" id="emulator_target" width="240px" height="160px"></canvas>
+        <span class="label label-default" id="tempMessage"></span>
+        </div>
+      </div>
+<!--
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+          </div>
+-->
+      
+    </body>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-82098437-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+</html>
