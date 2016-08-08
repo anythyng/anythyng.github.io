@@ -227,6 +227,7 @@
             <div id="" class="mainbod-section">
                 <div class="row">
                     <canvas class="container" id="emulator_target" width="240px" height="160px"></canvas>
+                    <img id="dpad-img" style="width:50px !important;height:50px !important;z-index:20 !important;margin-left:15px;" src="images/dpad.png">
                     <div class="container">
                         <span class="label label-default" id="tempMessage"></span>
                     </div>
@@ -1444,5 +1445,10 @@
         <!-- End clients Section -->
         
     </body>
-    
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script>
+        $(function(){
+           $("#dpad-img").draggable(); 
+        });
+    </script>
 </html>
