@@ -117,7 +117,7 @@ var Mixer = null;
 var MixerInput = null;
 var timerID = null;
 window.onload = function () {
-    if ((window.location.href != "https://anythyng.github.io/index.html" || window.location.href != "https://anythyng.github.io") || !games[location.hash.substr(1)]) {
+    if (!games[location.hash.substr(1)]) {
         alert("Invalid game request!\nPlease choose a game from the 'Games' dropdown.\nEnjoy!");
         return;
     }
@@ -191,7 +191,6 @@ function writeRedTemporaryText(textString) {
 }
 function showTempString(textString) {
     document.getElementById("tempMessage").style.display = "block";
-    document.getElementById("tempMessage").style.fontSize = "1.5em";
     document.getElementById("tempMessage").textContent = textString;
 }
 function clearTempString() {
