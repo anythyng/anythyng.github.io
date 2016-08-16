@@ -192,9 +192,11 @@ function writeRedTemporaryText(textString) {
 function showTempString(textString) {
     document.getElementById("tempMessage").style.display = "block";
     document.getElementById("tempMessage").textContent = textString;
+    document.getElementById("tempMessage").className = "alert alert-success"
 }
 function clearTempString() {
     document.getElementById("tempMessage").style.display = "none";
+    document.getElementById("tempMessage").className = ""
 }
 //Some wrappers and extensions for non-DOM3 browsers:
 function addEvent(sEvent, oElement, fListener) {
