@@ -120,6 +120,7 @@ window.onload = function () {
     if (!games[location.hash.substr(1)]) {
         alert("Invalid game request!\nPlease choose a game from the 'Games' dropdown.\nEnjoy!");
         return;
+        document.getElementById("tempMessage").style.display = "none";
     }
     //Initialize Iodine:
     Iodine = new GameBoyAdvanceEmulator();
