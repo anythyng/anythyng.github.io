@@ -321,11 +321,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Main Body Section -->
-        
-        <!-- Start Feature Section -->
-       
-        <!-- End clients Section -->
         
     </body>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
@@ -339,8 +334,6 @@
             var gameLinks = $(".rnd-game-link")
             for(var i = 0; i < gameTitlesArr.length; i++){
                 var rng = Math.floor(Math.random() * gameTitlesArr.length) + 0;
-//                console.log(rng);
-//                console.log(gameLinks[i])
                 if(i < gameLinks.length && gameTitles.length){
                     gameTitles[i].innerText = gameTitlesArr[rng].text
                     gameLinks[i].href = gameTitlesArr[rng].href
