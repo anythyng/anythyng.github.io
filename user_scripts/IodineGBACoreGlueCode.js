@@ -191,7 +191,7 @@ function writeRedTemporaryText(textString) {
 }
 function showTempString(textString) {
     document.getElementById("tempMessage").style.display = "block";
-    document.getElementById("tempMessage").style.fontSize = 1.5em;
+    document.getElementById("tempMessage").style.fontSize = "1.5em";
     document.getElementById("tempMessage").textContent = textString;
 }
 function clearTempString() {
