@@ -118,9 +118,13 @@ var MixerInput = null;
 var timerID = null;
 window.onload = function () {
     if (!games[location.hash.substr(1)]) {
-        alert("Invalid game request!\nPlease choose a game from the 'Games' dropdown.\nEnjoy!");
-        return;
+//        alert("Invalid game request!\nPlease choose a game from the 'Games' dropdown.\nEnjoy!");
+        document.getElementById("alertMessage").className = "alert alert-danger"
+        document.getElementById("alertMessage").innerHTML = "<strong>Whoops!</strong> Looks like you need to load in a game!"
+        document.getElementsByClassName("dropdown-toggle")[0].style.backgroundColor = "#ffa";
         document.getElementById("tempMessage").style.display = "none";
+        return;
+        
     }
     //Initialize Iodine:
     Iodine = new GameBoyAdvanceEmulator();
