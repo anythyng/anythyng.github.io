@@ -166,7 +166,7 @@ Resampler.prototype.bypassResampler = function (buffer) {
 		return buffer.length;
 	}
 	else {
-		//Just return the buffer passsed:
+		//Just return the buffer passed:
 		return buffer;
 	}
 }

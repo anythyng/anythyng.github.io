@@ -151,7 +151,7 @@ function registerBIOS() {
 }
 function downloadROM(gamename) {
     Iodine.pause();
-    showTempString("Downloading \"" + games[gamename] + ".\"");
+    showTempString("Preloading \"" + games[gamename] + ".\"");
     downloadFile("Binaries/" + gamename + ".gba", registerROM);
 }
 function registerROM() {
