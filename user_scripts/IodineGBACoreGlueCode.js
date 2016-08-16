@@ -123,6 +123,7 @@ window.onload = function () {
         document.getElementById("alertMessage").innerHTML = "<strong>Whoops!</strong> Looks like you need to load in a game!"
         document.getElementsByClassName("dropdown-toggle")[0].style.backgroundColor = "#ffa";
         document.getElementById("tempMessage").style.display = "none";
+        document.getElementById("emulator_target").style.display = "none";
         return;
         
     }
